@@ -1,22 +1,11 @@
-from sqlalchemy import create_engine, Column, String, Float, Integer
-from sqlalchemy.orm import declarative_base, sessionmaker
+from fastapi import FastAPI
 
-DATABASE_URL = "sqlite:///./leads.db"
+app = FastAPI()
 
-engine = create_engine(DATABASE_URL, echo=False)
-SessionLocal = sessionmaker(bind=engine)
+@app.get("/")
+def root():
+    return {"message": "NestNudge API is live 🚀"}
 
-Base = declarative_base()
-
-
-class LeadRecord(Base):
-    __tablename__ = "leads"
-
-    id = Column(Integer, primary_key=True, index=True)
-    lead_id = Column(String)
-    partner_id = Column(String)
-    bid = Column(Float)
-
-
-def init_db():
-    Base.metadata.create_all(bind=engine)
+@app.get("/health")
+def health():
+    return {"status": "ok"}
