@@ -1,11 +1,3 @@
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def root():
-    return {"message": "NestNudge API is live 🚀"}
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+git rm api/api/index.py
+git commit -m "Clean up: remove api/index.py"
+git push origin main
