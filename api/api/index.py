@@ -9,6 +9,3 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
-
-# 👇 THIS LINE IS THE KEY FIX
-handler = app
