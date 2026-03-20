@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from mangum import Mangum
 
 app = FastAPI()
 
@@ -9,3 +10,6 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+# 👇 THIS is the key
+handler = Mangum(app)
